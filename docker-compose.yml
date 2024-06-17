@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data  # Persist data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+      DATABASE_URL: postgres://postgres:password@db:5432/mydatabase
+      GOOGLE_GENERATIVE_API_KEY: ${GOOGLE_GENERATIVE_API_KEY}  # Ensure this is set in your .env file or your environment
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app/backend  # Mount the backend directory into the container
+    command: sh -c "npx sequelize-cli db:migrate && npm start"
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+
+volumes:
+  db-data:
