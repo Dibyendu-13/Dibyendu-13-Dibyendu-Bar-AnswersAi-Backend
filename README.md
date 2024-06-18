@@ -100,13 +100,15 @@ Running the Application
 
 #### Backend
 
-`   npm start   `
+`   cd backend 
+    npm start   `
 
 The backend server should now be running on [http://localhost:5000](http://localhost:5000).
 
 #### Frontend
 
-`   cd frontend  npm start   `
+`   cd frontend  
+    npm start   `
 
 The frontend server should now be running on [http://localhost:3000](http://localhost:3000).
 
