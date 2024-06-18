@@ -67,11 +67,13 @@ cd Dibyendu-Bar-AnswersAi-Backend   `
 
 ### Backend Setup
 
+cd backend 
 npm install   
 
 ### Frontend Setup
 
-cd frontend  npm install  
+cd frontend  
+npm install  
 
 ### Environment Variables
 
