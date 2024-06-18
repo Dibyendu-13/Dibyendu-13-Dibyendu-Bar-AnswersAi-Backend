@@ -67,7 +67,7 @@ cd Dibyendu-Bar-AnswersAi-Backend   `
 
 ### Backend Setup
 
-cd backend
+cd backend   
 npm install   
 
 ### Frontend Setup
